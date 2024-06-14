@@ -1,9 +1,9 @@
    <?php
    // Database configuration
-   $db_host = 'sql206.cpanelfree.com'; // Your database host, usually 'localhost'
-   $db_username = 'cpfr_36718239'; // Your database username
-   $db_password = 'Puffin017'; // Your database password
-   $db_name = 'cpfr_36718239_diary_app'; // Your database name
+   $db_host = 'YOUR_SQL_HOST_SERVER'; // Your database host, usually 'localhost'
+   $db_username = 'YOUR_DATABASE_USERNAME'; // Your database username
+   $db_password = 'YOUR_DATABASE_PASSWORD'; // Your database password
+   $db_name = 'YOUR_DATABASE_NAME'; // Your database name
 
    // Establish database connection
    try {
