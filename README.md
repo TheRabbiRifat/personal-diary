@@ -28,7 +28,7 @@ This is a simple web application for maintaining a personal diary. Users can sig
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/TheRabbiRifat/secret_diary.git
+    git clone https://github.com/TheRabbiRifat/personal-diary.git
     ```
 
 2. **Navigate to the project directory**:
