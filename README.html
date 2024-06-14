@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - Personal Diary Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #e91e63;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .directory-structure {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .directory-structure pre {
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Diary Web App</h1>
+
+        <p>This is a simple web application for maintaining a personal diary. Users can sign up, log in, and manage their daily entries through a calendar interface.</p>
+
+        <h2>Features</h2>
+        <ul>
+            <li><strong>User Authentication</strong>: Users can sign up for a new account or log in with their credentials.</li>
+            <li><strong>Calendar Interface</strong>: Users can view, add, update, and delete diary entries for each day.</li>
+            <li><strong>Motivational Quotes</strong>: The dashboard displays a random motivational quote each time the user logs in.</li>
+            <li><strong>Responsive Design</strong>: The app is designed to work seamlessly on desktop and mobile devices.</li>
+        </ul>
+
+        <h2>Technologies Used</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>MySQL</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+
+        <h3>Prerequisites</h3>
+        <ul>
+            <li>A web server with PHP support (e.g., Apache)</li>
+            <li>MySQL database</li>
+        </ul>
+
+        <h3>Installation</h3>
+        <ol>
+            <li>Clone the repository:
+                <pre><code>git clone https://github.com/your_username/personal-diary.git</code></pre>
+            </li>
+            <li>Navigate to the project directory:
+                <pre><code>cd personal-diary</code></pre>
+            </li>
+            <li>Set up the MySQL database:
+                <pre><code>CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    phone_number VARCHAR(20) NOT NULL,
+    pin_code CHAR(6) NOT NULL
+);
+
+CREATE TABLE entries (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    entry_date DATE NOT NULL,
+    entry_text TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);</code></pre>
+            </li>
+            <li>Update the <code>config.php</code> file in the <code>php/</code> directory with your database credentials:
+                <pre><code>&lt;?php
+$servername = "your_servername";
+$username = "your_username";
+$password = "your_password";
+$dbname = "your_database";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+?&gt;</code></pre>
+            </li>
+            <li>Deploy the project on your web server.</li>
+            <li>Access the application through a web browser.</li>
+        </ol>
+
+        <h2>Directory Structure</h2>
+        <div class="directory-structure">
+            <pre><code>personal-diary/
+├── css/
+│   └── styles.css
+├── js/
+├── php/
+│   ├── add_entry.php
+│   ├── config.php
+│   ├── delete_entry.php
+│   ├── functions.php
+│   ├── get_entries.php
+│   ├── login.php
+│   ├── logout.php
+│   ├── signup.php
+│   ├── update_entry.php
+├── images/
+├── index.html
+├── dashboard.php
+├── calendar.php
+├── logout.php</code></pre>
+        </div>
+
+        <h2>Usage</h2>
+        <ol>
+            <li><strong>Sign Up</strong>: Register a new account with your phone number and a 6-digit PIN code.</li>
+            <li><strong>Log In</strong>: Log in using your phone number and PIN code.</li>
+            <li><strong>Dashboard</strong>: View your greeting, the current date and time, a random motivational quote, and a link to the calendar.</li>
+            <li><strong>Calendar</strong>: View your entries, add new entries, update existing entries, and delete entries.</li>
+        </ol>
+
+        <h2>License</h2>
+        <p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+    </div>
+</body>
+                       </html>
+                       
