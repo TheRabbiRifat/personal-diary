@@ -13,7 +13,6 @@ This is a simple web application for maintaining a personal diary. Users can sig
 
 - HTML
 - CSS
-- JavaScript
 - PHP
 - MySQL
 
