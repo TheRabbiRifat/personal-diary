@@ -1,3 +1,9 @@
+d file with 110 additions and 0 deletions.
+ 110 changes: 110 additions & 0 deletions110  
+README.md
+Copied!
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,110 @@
 # Personal Diary Web App
 
 This is a simple web application for maintaining a personal diary. Users can sign up, log in, and manage their daily entries through a calendar interface.
@@ -13,6 +19,7 @@ This is a simple web application for maintaining a personal diary. Users can sig
 
 - HTML
 - CSS
+- JavaScript
 - PHP
 - MySQL
 
@@ -27,7 +34,7 @@ This is a simple web application for maintaining a personal diary. Users can sig
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/TheRabbiRifat/personal-diary.git
+    git clone https://github.com/your_username/personal-diary.git
     ```
 
 2. **Navigate to the project directory**:
@@ -36,39 +43,22 @@ This is a simple web application for maintaining a personal diary. Users can sig
     ```
 
 3. **Set up the MySQL database**:
-   
+    ```sql
+    CREATE TABLE users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name varchar(255) NOT NULL,
+        phone_number VARCHAR(20) NOT NULL,
+        pin_code CHAR(6) NOT NULL
+    );
 
-
-
-CREATE TABLE `entries` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `entry_date` date NOT NULL,
-  `entry_text` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `phone_number` varchar(20) NOT NULL,
-  `pin_code` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-ALTER TABLE `entries`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-  
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `entries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
-
+    CREATE TABLE entries (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        entry_date DATE NOT NULL,
+        entry_text TEXT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+    ```
 
 4. **Update the `config.php` file** in the `php/` directory with your database credentials:
     ```php
