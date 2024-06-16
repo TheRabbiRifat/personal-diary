@@ -36,21 +36,101 @@ This is a simple web application for maintaining a personal diary. Users can sig
     ```
 
 3. **Set up the MySQL database**:
-    ```sql
-    CREATE TABLE users (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        phone_number VARCHAR(20) NOT NULL,
-        pin_code CHAR(6) NOT NULL
-    );
+    -- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: sql206.cpanelfree.com
+-- Generation Time: Jun 16, 2024 at 01:09 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.2.22
 
-    CREATE TABLE entries (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        user_id INT NOT NULL,
-        entry_date DATE NOT NULL,
-        entry_text TEXT NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES users(id)
-    );
-    ```
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `cpfr_36718239_diary_app`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `entries`
+--
+
+CREATE TABLE `entries` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `entry_date` date NOT NULL,
+  `entry_text` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `pin_code` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `phone_number`, `pin_code`) VALUES
+(1, 'Puffin', '20287850', '$2y$10$ybWsam0/bU6.4OyNWMJe8eYxWrZfvXaziWcOKD6kIOUtLEmPojPUu');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `entries`
+--
+ALTER TABLE `entries`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `entries`
+--
+ALTER TABLE `entries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
 4. **Update the `config.php` file** in the `php/` directory with your database credentials:
     ```php
